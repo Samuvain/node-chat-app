@@ -70,7 +70,7 @@ io.on('connection', (socket) => {
         let user = users.removeUser(socket.id);
 
         if (user) {
-            io.to(user.room).emit('updateUserList', users.getUserList(params.room));
+            io.to(user.room).emit('updateUserList', users.getUserList(user.room));
             io.to(user.room).emit('newMessage', generateMessage('Admin', `${user.name} has left.`));
         }
         console.log('Client disconnected');
